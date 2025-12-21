@@ -19,9 +19,20 @@ app.get("/", (req, res) => {
 });
 
 app.get("/health", (req, res) => {
-  const timeStamp = Date.now()
-  res.json({ status: "ok", serverTime: timeStamp});
-  console.log('health check')
+  const timeStamp = Date.now();
+  res.json({ status: "ok", serverTime: timeStamp });
+  console.log("health check");
+});
+
+app.get("/test", (req, res) => {
+  if (req.headers["client-unit"] === "Golani") {
+    res.json({
+      unit: "Golani",
+      message: "briefing delivered",
+    });
+  } else {
+    res.status(400).json({ message: `${req.headers["client-unit"]} unit not found` });
+  }
 });
 
 app.listen(port, () => {
