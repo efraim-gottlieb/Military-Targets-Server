@@ -24,17 +24,23 @@ app.get("/health", (req, res) => {
   console.log("health check");
 });
 
-app.get("/test", (req, res) => {
+app.get("/message", (req, res) => {
   if (req.headers["client-unit"] === "Golani") {
     res.json({
       unit: "Golani",
       message: "briefing delivered",
     });
   } else {
-    res.status(400).json({ message: `${req.headers["client-unit"]} unit not found` });
+    res
+      .status(400)
+      .json({ message: `${req.headers["client-unit"]} unit not found` });
   }
 });
 
+app.get("/targets/:id", (req, res) => {
+  
+  res.json(req.params);
+});
 app.listen(port, () => {
   console.log(`Server is running on port ${port}...`);
 });
