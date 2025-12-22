@@ -1,9 +1,8 @@
-import { time } from "console";
 import express from "express";
-import { lchown } from "node:fs";
-import fs from "node:fs/promises";
-import file from "./utils/fileHandling.js";
 
+import fs from "node:fs/promises";
+
+import targetsRoutes from "./routes/targetsRoutes.js";
 const app = express();
 const port = 3000;
 
@@ -21,31 +20,13 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get("/", (req, res) => {
-  res.json({
-    message: "Welcome to Military Targets Server",
-    version: "1.0.0",
-  });
-});
-
 app.get("/health", (req, res) => {
   const timeStamp = new Date();
   res.json({ status: "ok", serverTime: timeStamp });
   console.log("health check");
 });
 
-app.get("/message", (req, res) => {
-  if (req.headers["client-unit"] === "Golani") {
-    res.json({
-      unit: "Golani",
-      message: "briefing delivered",
-    });
-  } else {
-    res
-      .status(400)
-      .json({ message: `${req.headers["client-unit"]} unit not found` });
-  }
-});
+
 
 app.get("/targets/:id", async (req, res) => {
   const targets = JSON.parse(
@@ -115,6 +96,8 @@ app.post("/targets/:id", async (req, res) => {
   );
   res.status(201).json({ sucsess: targets[result] });
 });
+
+app.use("/", targetsRoutes);
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}...`);
