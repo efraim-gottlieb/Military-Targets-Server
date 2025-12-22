@@ -1,5 +1,6 @@
 import { time } from "console";
 import express from "express";
+import fs from "node:fs/promises";
 
 const app = express();
 const port = 3000;
@@ -37,10 +38,17 @@ app.get("/message", (req, res) => {
   }
 });
 
-app.get("/targets/:id", (req, res) => {
-  
-  res.json(req.params);
+app.get("/targets/:id", async (req, res) => {
+  const targets = JSON.parse(
+    await fs.readFile(process.cwd() + "/data/targets.json", "utf-8")
+  );
+  const result = targets.targets.find((target) => target.id === req.params.id);
+  if (!result) {
+    res.status(404).json({ message: `${req.params.id} not found` });
+  }
+  res.json(result);
 });
 app.listen(port, () => {
   console.log(`Server is running on port ${port}...`);
 });
+
