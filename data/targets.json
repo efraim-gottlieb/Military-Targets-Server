@@ -1,12 +1,76 @@
 {
   "targets": [
     {
-      "id": "t-102",
-      "codeName": "Iron Falcon",
-      "region": "north",
-      "priority": 4,
-      "status": "new",
-      "createdAt": "2025-12-21T09:30:00.000Z"
+      "id": "86x4lb",
+      "createdAt": "2025-12-22T11:23:28.440Z",
+      "codeName": "sari",
+      "region": "Center",
+      "priority": 10,
+      "status": "new"
+    },
+    {
+      "id": "isvr8c",
+      "createdAt": "2025-12-22T11:24:05.190Z",
+      "codeName": "sari",
+      "region": "Center",
+      "priority": 10,
+      "status": "new"
+    },
+    {
+      "id": "cztnf3",
+      "createdAt": "2025-12-22T11:24:05.737Z",
+      "codeName": "sari",
+      "region": "Center",
+      "priority": 10,
+      "status": "new"
+    },
+    {
+      "id": "le2n4x",
+      "createdAt": "2025-12-22T11:24:06.052Z",
+      "codeName": "sari",
+      "region": "Center",
+      "priority": 10,
+      "status": "new"
+    },
+    {
+      "id": "8pp15x",
+      "createdAt": "2025-12-22T11:24:06.399Z",
+      "codeName": "sari",
+      "region": "Center",
+      "priority": 10,
+      "status": "new"
+    },
+    {
+      "id": "rklfh6",
+      "createdAt": "2025-12-22T11:24:06.711Z",
+      "codeName": "sari",
+      "region": "Center",
+      "priority": 10,
+      "status": "new"
+    },
+    {
+      "id": "1",
+      "createdAt": "2025-12-22T11:24:07.043Z",
+      "codeName": "Efi",
+      "region": "IL",
+      "priority": 10,
+      "status": "new"
+    },
+    {
+      "id": "wgysv0",
+      "createdAt": "2025-12-22T11:24:07.389Z",
+      "codeName": "sari",
+      "region": "Center",
+      "priority": 10,
+      "status": "new"
+    },
+    {
+      "id": "ll11hn",
+      "createdAt": "2025-12-22T12:49:13.448Z",
+      "codeName": "Efraim Gottlieb",
+      "region": "Center",
+      "priority": 10,
+      "status": "new"
     }
   ]
 }
