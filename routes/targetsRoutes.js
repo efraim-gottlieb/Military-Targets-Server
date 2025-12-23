@@ -12,5 +12,8 @@ router.get("/targets/:id", targetController.getTarget)
 
 router.get("/targets", targetController.getTargets)
 
+router.post("/targets", targetController.addTarget)
+
+router.post("/targets/:id", targetController.editTarget)
 
 export default router;
