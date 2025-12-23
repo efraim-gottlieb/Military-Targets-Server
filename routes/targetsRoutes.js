@@ -6,4 +6,11 @@ router.get("/", targetController.welcome);
 
 router.get("/message", targetController.msg);
 
+router.get("/health", targetController.health)
+
+router.get("/targets/:id", targetController.getTarget)
+
+router.get("/targets", targetController.getTargets)
+
+
 export default router;

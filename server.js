@@ -1,8 +1,7 @@
 import express from "express";
-
 import fs from "node:fs/promises";
-
 import targetsRoutes from "./routes/targetsRoutes.js";
+
 const app = express();
 const port = 3000;
 
@@ -18,47 +17,6 @@ app.use((req, res, next) => {
 app.use((req, res, next) => {
   console.log(`req: [${req.method} - ${req.url}] | timwstamp: ${new Date()}`);
   next();
-});
-
-app.get("/health", (req, res) => {
-  const timeStamp = new Date();
-  res.json({ status: "ok", serverTime: timeStamp });
-  console.log("health check");
-});
-
-
-
-app.get("/targets/:id", async (req, res) => {
-  const targets = JSON.parse(
-    await fs.readFile(process.cwd() + "/data/targets.json", "utf-8")
-  );
-  const result = targets.targets.find((target) => target.id === req.params.id);
-  if (!result) {
-    res.status(404).json({ message: `${req.params.id} not found` });
-  }
-  res.json(result);
-});
-
-app.get("/targets", async (req, res) => {
-  const region = req.query.region;
-  const status = req.query.status;
-  const minPriority = req.query.minPriority;
-
-  if (!(region && status && minPriority)) {
-    res.status(404).send("params error !");
-  }
-  const targets = JSON.parse(
-    await fs.readFile(process.cwd() + "/data/targets.json", "utf-8")
-  ).targets;
-  const result = targets.filter(
-    (t) =>
-      t.region === region && t.status === status && t.priority >= minPriority
-  );
-  if (result.length == 0) {
-    res.send("not found !");
-    return;
-  }
-  res.json(result);
 });
 
 app.post("/targets", async (req, res) => {
