@@ -4,13 +4,13 @@ import { health, msg, welcome } from "./midllewares/index.js";
 import dotenv from "dotenv";
 import path from "path";
 
+dotenv.config({path: ".env"})
 const app = express();
-const port = 3000;
+const port = process.env.port
 
 app.use(express.json());
 
-dotenv.config({path: ".env"})
-console.log(process.env.port)
+
 
 app.use((req, res, next) => {
   res.set({
