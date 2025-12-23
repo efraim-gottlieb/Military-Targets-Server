@@ -2,18 +2,18 @@ import express from "express";
 import * as targetController from "../controllers/targetController.js";
 const router = express.Router();
 
-router.get("/", targetController.welcome);
+// router.get("/", targetController.getTargets);
+// router.get("/:id", targetController.getTarget);
+// router.post("/", targetController.addTarget);
+// router.post("/:id", targetController.editTarget);
 
-router.get("/message", targetController.msg);
+router
+  .route("/")
+  .get(targetController.getTargets)
+  .post(targetController.addTarget);
 
-router.get("/health", targetController.health)
-
-router.get("/targets/:id", targetController.getTarget)
-
-router.get("/targets", targetController.getTargets)
-
-router.post("/targets", targetController.addTarget)
-
-router.post("/targets/:id", targetController.editTarget)
-
+router
+  .route("/:id")
+  .get(targetController.getTarget)
+  .post(targetController.editTarget);
 export default router;
